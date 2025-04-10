@@ -60,7 +60,7 @@ const BookTable = observer(({ viewModel }: Props) => {
             ))
           ) : (
             <tr>
-              <td colSpan={4}>No se encontraron libros</td>
+              <td colSpan={4}>No se encontraron los libros</td>
             </tr>
           )}
         </tbody>
