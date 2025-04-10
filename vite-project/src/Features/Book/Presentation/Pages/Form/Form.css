@@ -1,0 +1,94 @@
+/* Estilos para la alerta de éxito */
+.success-alert {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #4CAF50;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 5px;
+  font-weight: bold;
+  z-index: 1000;
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from { top: -50px; opacity: 0; }
+  to { top: 20px; opacity: 1; }
+}
+
+/* Contenedor del formulario */
+.form-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e1e1e1;
+}
+
+/* Resto de estilos para los inputs */
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  font-size: 16px;
+  color: #34495e;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* Estilo para los inputs */
+.input-group input {
+  width: 100%;
+  padding: 14px 20px;  /* Aumento de espacio para que el texto no esté tan pegado al borde */
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 8px;  /* Bordes redondeados más suaves */
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.2);
+}
+
+/* Estilo del Botón de Envío */
+.submit-button {
+  padding: 14px 22px;
+  font-size: 18px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;  /* Bordes redondeados */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #218838;
+}
+
+.submit-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Mensajes de Error */
+.error-message {
+  color: #e74c3c;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* Estilo del contenedor de la tabla */
+.table-container {
+  margin-top: 40px;
+  text-align: center;
+}

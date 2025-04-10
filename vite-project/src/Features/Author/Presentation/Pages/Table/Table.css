@@ -1,0 +1,75 @@
+/* Contenedor principal de la tabla */
+.table-container {
+  max-width: 800px;          /* Same width as the form */
+  margin: 40px auto;         /* Centered horizontally (40px top/bottom) */
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Encabezado de la tabla */
+.table-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Tabla */
+.authors-table {
+  width: 100%;               /* Takes up the entire container width */
+  border-collapse: collapse;
+}
+
+/* Celdas y encabezados */
+.authors-table th,
+.authors-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.authors-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.authors-table td {
+  background-color: #fff;
+}
+
+/* Botones de acción */
+.edit-button,
+.delete-button {
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.edit-button {
+  background-color: #4caf50;
+  color: white;
+}
+
+.delete-button {
+  background-color: #f44336;
+  color: white;
+}
+
+.edit-button:hover {
+  background-color: #45a049;
+}
+
+.delete-button:hover {
+  background-color: #e53935;
+}
+
+/* Mensaje de error */
+.error-message {
+  color: red;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: bold;
+}
