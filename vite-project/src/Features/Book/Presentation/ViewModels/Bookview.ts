@@ -29,12 +29,12 @@ export class BookViewModel {
     this.loadBooks();
   }
 
-  // Métodos para manejar los cambios en los campos del formulario
+  
   onChangeTitle = (title: string) => (this.title = title);
 
   onChangeYear = (year: number) => (this.year = year);
 
-  // Método para crear un nuevo libro
+ 
   async doCreateBook() {
     this.error = null;
     this.isValid = false;
@@ -50,7 +50,7 @@ export class BookViewModel {
 
       if (data) {
         runInAction(() => {
-          this.books.push(data); // Actualiza la lista de libros con el nuevo libro
+          this.books.push(data); 
           this.isValid = true;
           this.title = "";
           this.year = 0;
@@ -113,7 +113,7 @@ export class BookViewModel {
 
       if (data) {
         runInAction(() => {
-          // Actualiza el libro modificado en la lista
+          
           this.books = this.books.map((book) =>
             book.id === data.id ? data : book
           );

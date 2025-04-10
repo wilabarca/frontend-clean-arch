@@ -1,4 +1,3 @@
-/* Estilos para la alerta de éxito */
 .success-alert {
   position: fixed;
   top: 20px;
@@ -18,7 +17,6 @@
   to { top: 20px; opacity: 1; }
 }
 
-/* Contenedor del formulario */
 .form-container {
   width: 100%;
   max-width: 400px;
@@ -30,7 +28,6 @@
   border: 1px solid #e1e1e1;
 }
 
-/* Resto de estilos para los inputs */
 .input-group {
   margin-bottom: 20px;
 }
@@ -42,13 +39,12 @@
   display: block;
 }
 
-/* Estilo para los inputs */
 .input-group input {
   width: 100%;
-  padding: 14px 20px;  /* Aumento de espacio para que el texto no esté tan pegado al borde */
+  padding: 14px 20px;
   font-size: 16px;
   border: 2px solid #ccc;
-  border-radius: 8px;  /* Bordes redondeados más suaves */
+  border-radius: 8px;
   box-sizing: border-box;
   outline: none;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -59,14 +55,13 @@
   box-shadow: 0 0 8px rgba(52, 152, 219, 0.2);
 }
 
-/* Estilo del Botón de Envío */
 .submit-button {
   padding: 14px 22px;
   font-size: 18px;
   background-color: #28a745;
   color: white;
   border: none;
-  border-radius: 8px;  /* Bordes redondeados */
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -80,14 +75,12 @@
   cursor: not-allowed;
 }
 
-/* Mensajes de Error */
 .error-message {
   color: #e74c3c;
   font-size: 14px;
   margin-top: 10px;
 }
 
-/* Estilo del contenedor de la tabla */
 .table-container {
   margin-top: 40px;
   text-align: center;

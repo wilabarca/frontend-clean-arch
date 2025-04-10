@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react-lite";
 import { runInAction } from "mobx";
-import { AuthorViewModel } from "../../ViewModels/Authorview";  // Change the view model to AuthorViewModel
-import AuthorTable from "../Table/Table";  // Assuming AuthorTable is a similar table component
+import { AuthorViewModel } from "../../ViewModels/Authorview";  
+import AuthorTable from "../Table/Table";  
 import Header from "../../../../../Core/Components/Header/Header";
 import "./Form.css";
 
@@ -18,10 +18,10 @@ const AuthorForm = observer(({ viewModel }: Props) => {
     await viewModel.doCreateAuthor();
 
     if (viewModel.isValid) {
-      await viewModel.loadAuthors();  // Assuming there is a method to load authors
+      await viewModel.loadAuthors();  
       setShowSuccessMessage(true);
 
-      // Hide the success message and reset state after 5 seconds
+      
       setTimeout(() => {
         setShowSuccessMessage(false);
         runInAction(() => (viewModel.isValid = false));
@@ -33,11 +33,11 @@ const AuthorForm = observer(({ viewModel }: Props) => {
     <>
       {showSuccessMessage && (
         <div className="success-alert">
-          ¡Autor agregado exitosamente! {/* Success message */}
+          ¡Autor agregado exitosamente! 
         </div>
       )}
 
-      <Header title="Bienvenido al Sistema de Autores" /> {/* Update header for authors */}
+      <Header title="Bienvenido al Sistema de Autores" /> 
 
       <div className="form-container">
         <h2>Registrar Autor</h2>
@@ -81,7 +81,7 @@ const AuthorForm = observer(({ viewModel }: Props) => {
       </div>
 
       <div className="table-container">
-        <AuthorTable viewModel={viewModel} /> {/* AuthorTable now receives the AuthorViewModel */}
+        <AuthorTable viewModel={viewModel} /> 
       </div>
     </>
   );

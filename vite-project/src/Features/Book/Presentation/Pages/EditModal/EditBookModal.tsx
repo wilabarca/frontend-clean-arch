@@ -6,7 +6,7 @@ import "./EditBookModal.css";
 interface Props {
   viewModel: BookViewModel;
   book: BookDTO;
-  onClose: () => void; // Función para cerrar el modal
+  onClose: () => void; 
 }
 
 const EditBookModal: React.FC<Props> = ({ viewModel, book, onClose }) => {
@@ -21,9 +21,9 @@ const EditBookModal: React.FC<Props> = ({ viewModel, book, onClose }) => {
   };
 
   const handleSave = async () => {
-    await viewModel.doUpdateBook(updatedBook); // Método para actualizar el libro en el viewModel
+    await viewModel.doUpdateBook(updatedBook); 
     onClose(); // Cerrar el modal
-    alert("¡El libro ha sido actualizado exitosamente!"); // Alerta de éxito
+    alert("¡El libro ha sido actualizado exitosamente!"); 
   };
 
   return (

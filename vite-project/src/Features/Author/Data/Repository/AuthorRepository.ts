@@ -23,12 +23,12 @@ export class AuthorRepository {
     return this.handleResponse(response);
   }
 
-  // Método para eliminar un autor
+  
   async delete(authorId: number): Promise<void> {
     const response = await fetch(`${this.baseUrl}/Author/${authorId}`, {
       method: "DELETE",
     });
-    await this.handleResponse(response); // No es necesario devolver nada, solo manejar la respuesta
+    await this.handleResponse(response); 
   }
 
   private async handleResponse(response: Response) {
@@ -39,8 +39,7 @@ export class AuthorRepository {
     return response.json();
   }
 
-  // En AuthorRepository
-// En AuthorRepository.ts
+ 
 async update(author: Author): Promise<AuthorDTO> {
     if (!author.id) throw new Error("ID de autor inválido");
     

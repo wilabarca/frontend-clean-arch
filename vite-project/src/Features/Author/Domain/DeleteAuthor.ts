@@ -8,6 +8,6 @@ export class DeleteAuthorUseCase {
   }
 
   async execute(authorId: number): Promise<void> {
-    await this.authorRepository.delete(authorId); // Llamamos al repositorio para eliminar el autor
+    await this.authorRepository.delete(authorId); 
   }
 }

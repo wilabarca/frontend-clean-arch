@@ -21,7 +21,7 @@ const BookForm = observer(({ viewModel }: Props) => {
       await viewModel.loadBooks();
       setShowSuccessMessage(true);
       
-      // Ocultar mensaje y resetear estado después de 5 segundos
+      
       setTimeout(() => {
         setShowSuccessMessage(false);
         runInAction(() => (viewModel.isValid = false));
@@ -33,7 +33,7 @@ const BookForm = observer(({ viewModel }: Props) => {
     <>
       {showSuccessMessage && (
         <div className="success-alert">
-          ¡Libro agregado exitosamente! {/* Mensaje actualizado */}
+          ¡Libro agregado exitosamente! 
         </div>
       )}
 

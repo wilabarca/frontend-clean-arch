@@ -6,7 +6,7 @@ import "./AuthorEditModal.css";
 interface Props {
   viewModel: AuthorViewModel;
   author: AuthorDTO;
-  onClose: () => void; // Función para cerrar el modal
+  onClose: () => void;
 }
 
 const EditAuthorModal: React.FC<Props> = ({ viewModel, author, onClose }) => {
@@ -14,7 +14,7 @@ const EditAuthorModal: React.FC<Props> = ({ viewModel, author, onClose }) => {
 
   useEffect(() => {
     setUpdatedAuthor(author);
-  }, [author]); // Actualiza el estado cuando el autor cambie
+  }, [author]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -25,8 +25,8 @@ const EditAuthorModal: React.FC<Props> = ({ viewModel, author, onClose }) => {
   };
 
   const handleSave = async () => {
-    await viewModel.doUpdateAuthor(updatedAuthor); // Método para actualizar el autor
-    onClose(); // Cerrar el modal
+    await viewModel.doUpdateAuthor(updatedAuthor);
+    onClose();
     alert("¡El autor ha sido actualizado exitosamente!");
   };
 
@@ -58,8 +58,6 @@ const EditAuthorModal: React.FC<Props> = ({ viewModel, author, onClose }) => {
               />
             </label>
           </div>
-
-         
 
           <button type="button" className="save-button" onClick={handleSave}>
             Guardar Cambios

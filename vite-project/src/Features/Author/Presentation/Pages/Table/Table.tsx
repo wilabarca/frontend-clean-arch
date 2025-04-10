@@ -1,29 +1,28 @@
 import { observer } from "mobx-react-lite";
 import { AuthorViewModel } from "../../ViewModels/Authorview";
-import { AuthorDTO } from "../../../Data/Models/AuthorTO"; // Assuming this DTO is defined similarly to BookDTO
+import { AuthorDTO } from "../../../Data/Models/AuthorTO";
 import { useState } from "react";
-import "./Table.css";  // Make sure this CSS file is correctly imported
+import "./Table.css";
 import EditAuthorModal from "../ViewModel/AuthorEditModal";
-
 
 interface Props {
   viewModel: AuthorViewModel;
 }
 
 const AuthorTable = observer(({ viewModel }: Props) => {
-  const [selectedAuthor, setSelectedAuthor] = useState<AuthorDTO | null>(null); // State to store selected author
+  const [selectedAuthor, setSelectedAuthor] = useState<AuthorDTO | null>(null);
 
   const handleEdit = (author: AuthorDTO) => {
-    setSelectedAuthor(author); // Opens modal with selected author
+    setSelectedAuthor(author);
   };
 
   const handleDelete = async (authorId: number) => {
-    await viewModel.doDeleteAuthor(authorId); // Deletes the author from the list
-    alert("¿Desea Eliminar Autor?"); // Alert to confirm deletion
+    await viewModel.doDeleteAuthor(authorId);
+    alert("¿Desea Eliminar Autor?");
   };
 
   const closeModal = () => {
-    setSelectedAuthor(null); // Closes the modal
+    setSelectedAuthor(null);
   };
 
   return (
@@ -68,7 +67,6 @@ const AuthorTable = observer(({ viewModel }: Props) => {
         </tbody>
       </table>
 
-      {/* Show the modal if an author has been selected */}
       {selectedAuthor && (
         <EditAuthorModal
           viewModel={viewModel}
