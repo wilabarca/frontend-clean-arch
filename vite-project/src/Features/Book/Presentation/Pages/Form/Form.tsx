@@ -33,7 +33,7 @@ const BookForm = observer(({ viewModel }: Props) => {
     <>
       {showSuccessMessage && (
         <div className="success-alert">
-          ¡Autor agregado exitosamente! {/* Mensaje actualizado */}
+          ¡Libro agregado exitosamente! {/* Mensaje actualizado */}
         </div>
       )}
 
