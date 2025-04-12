@@ -1,35 +1,16 @@
-import React, { useState, useEffect } from "react";
+// src/Presentation/Components/Author/EditAuthorModal.tsx
+import React from "react";
 import { AuthorDTO } from "../../../Data/Models/AuthorTO";
-import { AuthorViewModel } from "../../ViewModels/Authorview";
 import "./AuthorEditModal.css";
 
 interface Props {
-  viewModel: AuthorViewModel;
   author: AuthorDTO;
+  onChange: (field: keyof AuthorDTO, value: string) => void;
+  onSave: () => void;
   onClose: () => void;
 }
 
-const EditAuthorModal: React.FC<Props> = ({ viewModel, author, onClose }) => {
-  const [updatedAuthor, setUpdatedAuthor] = useState<AuthorDTO>(author);
-
-  useEffect(() => {
-    setUpdatedAuthor(author);
-  }, [author]);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setUpdatedAuthor((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSave = async () => {
-    await viewModel.doUpdateAuthor(updatedAuthor);
-    onClose();
-    alert("¡El autor ha sido actualizado exitosamente!");
-  };
-
+const EditAuthorModal: React.FC<Props> = ({ author, onChange, onSave, onClose }) => {
   return (
     <div className="modal-overlay">
       <div className="modal-content">
@@ -41,8 +22,8 @@ const EditAuthorModal: React.FC<Props> = ({ viewModel, author, onClose }) => {
               <input
                 type="text"
                 name="name"
-                value={updatedAuthor.name}
-                onChange={handleChange}
+                value={author.name}
+                onChange={(e) => onChange("name", e.target.value)}
               />
             </label>
           </div>
@@ -53,13 +34,13 @@ const EditAuthorModal: React.FC<Props> = ({ viewModel, author, onClose }) => {
               <input
                 type="email"
                 name="email"
-                value={updatedAuthor.email}
-                onChange={handleChange}
+                value={author.email}
+                onChange={(e) => onChange("email", e.target.value)}
               />
             </label>
           </div>
 
-          <button type="button" className="save-button" onClick={handleSave}>
+          <button type="button" className="save-button" onClick={onSave}>
             Guardar Cambios
           </button>
           <button type="button" className="close-button" onClick={onClose}>

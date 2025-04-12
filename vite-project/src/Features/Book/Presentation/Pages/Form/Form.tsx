@@ -1,39 +1,24 @@
-import React, { useState } from "react";
+
 import { observer } from "mobx-react-lite";
-import { runInAction } from "mobx";
 import { BookViewModel } from "../../ViewModels/Bookview";
 import BookTable from "../Table/Table";
 import Header from "../../../../../Core/Components/Header/Header";
+
 import "./Form.css";
+import { useBookFormLogic } from "../../ViewModels/useBookFormLogic";
 
 interface Props {
   viewModel: BookViewModel;
 }
 
 const BookForm = observer(({ viewModel }: Props) => {
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    await viewModel.doCreateBook();
-
-    if (viewModel.isValid) {
-      await viewModel.loadBooks();
-      setShowSuccessMessage(true);
-      
-      
-      setTimeout(() => {
-        setShowSuccessMessage(false);
-        runInAction(() => (viewModel.isValid = false));
-      }, 5000);
-    }
-  };
+  const { showSuccessMessage, handleSubmit } = useBookFormLogic(viewModel);
 
   return (
     <>
       {showSuccessMessage && (
         <div className="success-alert">
-          ¡Libro agregado exitosamente! 
+          ¡Libro agregado exitosamente!
         </div>
       )}
 
@@ -81,7 +66,7 @@ const BookForm = observer(({ viewModel }: Props) => {
       </div>
 
       <div className="table-container">
-        <BookTable viewModel={viewModel} /> 
+        <BookTable viewModel={viewModel} />
       </div>
     </>
   );

@@ -1,8 +1,9 @@
+
 import { observer } from "mobx-react-lite";
 import { BookViewModel } from "../../ViewModels/Bookview";
-import { BookDTO } from "../../../Data/Models/BookTO";
-import { useState } from "react";
-import "./Table.css";  
+import { useBookTableLogic } from "../../ViewModels/useBookTableLogic";
+
+import "./Table.css";
 import EditBookModal from "../EditModal/EditBookModal";
 
 interface Props {
@@ -10,19 +11,7 @@ interface Props {
 }
 
 const BookTable = observer(({ viewModel }: Props) => {
-  const [selectedBook, setSelectedBook] = useState<BookDTO | null>(null); 
-  const handleEdit = (book: BookDTO) => {
-    setSelectedBook(book); // Abre el modal con el libro seleccionado
-  };
-
-  const handleDelete = async (bookId: number) => {
-    await viewModel.doDeleteBook(bookId); 
-    alert("¿Desea Eliminar Libro?"); 
-  };
-
-  const closeModal = () => {
-    setSelectedBook(null); 
-  };
+  const { selectedBook, handleEdit, handleDelete, closeModal } = useBookTableLogic(viewModel);
 
   return (
     <div className="table-container">
@@ -66,7 +55,6 @@ const BookTable = observer(({ viewModel }: Props) => {
         </tbody>
       </table>
 
-    
       {selectedBook && (
         <EditBookModal
           viewModel={viewModel}

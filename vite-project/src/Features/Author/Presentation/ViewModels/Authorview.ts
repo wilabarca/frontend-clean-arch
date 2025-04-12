@@ -121,4 +121,26 @@ export class AuthorViewModel {
       runInAction(() => (this.isSubmitting = false));
     }
   }
+
+
+  // src/Presentation/ViewModels/AuthorViewModel.ts
+
+  setAuthorToEditField(field: keyof AuthorDTO, value: string) {
+    if (this.authorToEdit && field !== "id") {
+      this.authorToEdit = {
+        ...this.authorToEdit,
+        [field]: value,
+      };
+    }
+  }
+  
+
+async saveEditedAuthor(onSuccess: () => void) {
+  if (this.authorToEdit) {
+    await this.doUpdateAuthor(this.authorToEdit);
+    alert("¡El autor ha sido actualizado exitosamente!");
+    onSuccess();
+  }
+}
+
 }

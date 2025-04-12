@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+
+import React from "react";
 import { BookDTO } from "../../../Data/Models/BookTO";
 import { BookViewModel } from "../../ViewModels/Bookview";
+import { useEditBookLogic } from "../../ViewModels/useEditBookLogic";
 import "./EditBookModal.css";
 
 interface Props {
@@ -10,21 +12,7 @@ interface Props {
 }
 
 const EditBookModal: React.FC<Props> = ({ viewModel, book, onClose }) => {
-  const [updatedBook, setUpdatedBook] = useState<BookDTO>({ ...book });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setUpdatedBook((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSave = async () => {
-    await viewModel.doUpdateBook(updatedBook); 
-    onClose(); // Cerrar el modal
-    alert("¡El libro ha sido actualizado exitosamente!"); 
-  };
+  const { updatedBook, handleChange, handleSave } = useEditBookLogic(viewModel, book, onClose);
 
   return (
     <div className="modal-overlay">

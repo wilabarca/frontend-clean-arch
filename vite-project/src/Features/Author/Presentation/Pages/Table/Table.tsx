@@ -1,29 +1,23 @@
+// src/Presentation/Components/Author/AuthorTable.tsx
 import { observer } from "mobx-react-lite";
-import { AuthorViewModel } from "../../ViewModels/Authorview";
 import { AuthorDTO } from "../../../Data/Models/AuthorTO";
-import { useState } from "react";
 import "./Table.css";
+import { AuthorViewModel } from "../../ViewModels/Authorview";
 import EditAuthorModal from "../ViewModel/AuthorEditModal";
+import { useAuthorTableLogic } from "../../ViewModels/useAuthorTableLogic";
 
 interface Props {
   viewModel: AuthorViewModel;
 }
 
 const AuthorTable = observer(({ viewModel }: Props) => {
-  const [selectedAuthor, setSelectedAuthor] = useState<AuthorDTO | null>(null);
-
-  const handleEdit = (author: AuthorDTO) => {
-    setSelectedAuthor(author);
-  };
-
-  const handleDelete = async (authorId: number) => {
-    await viewModel.doDeleteAuthor(authorId);
-    alert("¿Desea Eliminar Autor?");
-  };
-
-  const closeModal = () => {
-    setSelectedAuthor(null);
-  };
+  const {
+    handleEdit,
+    handleDelete,
+    closeModal,
+    handleChange,
+    handleSave
+  } = useAuthorTableLogic(viewModel);
 
   return (
     <div className="table-container">
@@ -44,7 +38,7 @@ const AuthorTable = observer(({ viewModel }: Props) => {
         </thead>
         <tbody>
           {viewModel.authors.length > 0 ? (
-            viewModel.authors.map((author) => (
+            viewModel.authors.map((author: AuthorDTO) => (
               <tr key={author.id}>
                 <td>{author.id}</td>
                 <td>{author.name}</td>
@@ -67,10 +61,11 @@ const AuthorTable = observer(({ viewModel }: Props) => {
         </tbody>
       </table>
 
-      {selectedAuthor && (
+      {viewModel.authorToEdit && (
         <EditAuthorModal
-          viewModel={viewModel}
-          author={selectedAuthor}
+          author={viewModel.authorToEdit}
+          onChange={handleChange}
+          onSave={handleSave}
           onClose={closeModal}
         />
       )}
